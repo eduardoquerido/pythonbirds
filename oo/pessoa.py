@@ -16,6 +16,13 @@ class Pessoa:
             self):  # método é diferente de uma função pois está dentro de uma classe e sempre está atrelado a um objeto
         return f'Olá {id(self)}'
 
+    @staticmethod #Isso é um decorator
+    def metodo_estatico():
+        return 42
+
+    @classmethod
+    def nome_e_atributos_de_classe(cls): #o cls está se referindo a classe desse código, no caso, a classe Pessoa
+        return f'{cls} - olhos {cls.olhos}'
 
 if __name__ == '__main__':
     rumbels = Pessoa(nome='Rumbelsperger')
@@ -41,3 +48,5 @@ if __name__ == '__main__':
 
     print(id(Pessoa.olhos), id(rumbels.olhos), id(querido.olhos)) #imprimindo o id desse atributo, seja com a classe ou com
                                                                   #os objetos, iremos obter o mesmo resultado, pois ele é padrão
+    print(Pessoa.metodo_estatico(), querido.metodo_estatico())
+    print(Pessoa.nome_e_atributos_de_classe(), querido.nome_e_atributos_de_classe())
