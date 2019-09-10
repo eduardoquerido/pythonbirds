@@ -8,8 +8,8 @@ class Pessoa:
         return f'Olá {id(self)}'
 
 if __name__ == '__main__':
-    rumbelsperger = Pessoa(nome='Rumbelsperger')
-    querido = Pessoa(rumbelsperger, nome='Querido') #atributo complexo, rumbelsperger depende do querido
+    rumbels = Pessoa(nome='Rumbelsperger')
+    querido = Pessoa(rumbels, nome='Querido') #atributo complexo, rumbelsperger depende do querido
     print(Pessoa.cumprimentar(querido))
     print(id(querido))
     print(querido.cumprimentar())
@@ -17,5 +17,8 @@ if __name__ == '__main__':
     print(querido.idade)
     for filho in querido.filhos:
         print(filho.nome)
-    querido.sobrenome = 'Ferreira' #atributo dinâmico
+    querido.sobrenome = 'Ferreira' #Aqui estou incluindo um atributo dinâmico
+    del querido.filhos #Aqui estou REMOVENDO um atributo dinamicamente
     print(querido.sobrenome)
+    print(querido.__dict__) #os atributps de instância ficam armazenados no "__dict__"
+    print(rumbels.__dict__)
