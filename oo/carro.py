@@ -1,4 +1,3 @@
-
 """
 Você deve criar uma classse carro que vai possuir dois atributos compostos por outras duas classes:
 
@@ -18,19 +17,22 @@ A direção terá a responsabilidade de controlar a direção. Ela oferece os se
 
 
     Exemplo:
-    >>> motor=Motor()
+    >>> motor = Motor()
     >>> motor.velocidade
     0
     >>> motor.acelerar()
+    >>> motor.velocidade
     1
     >>> motor.acelerar()
+    >>> motor.velocidade
     2
-    >>> motor.velocidade()
+    >>> motor.acelerar()
+    >>> motor.velocidade
     3
     >>> motor.frear()
+    >>> motor.velocidade
     1
-    >>> motor.velocidade()
-    1
+
 
     >>> #Testando Direção
     >>> direcao=Direcao()
@@ -83,18 +85,17 @@ A direção terá a responsabilidade de controlar a direção. Ela oferece os se
 
 
 """
-
-
 class Motor:
     def __init__(self):
-       self.velocidade = 0
+        self.velocidade = 0
 
     def acelerar(self):
         self.velocidade += 1
 
     def frear(self):
         self.velocidade -= 2
-        self.velocidade=max(0,self.velocidade)
+        self.velocidade = max(0, self.velocidade)
+
 
 NORTE='Norte'
 LESTE= 'Leste'
