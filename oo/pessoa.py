@@ -24,8 +24,14 @@ class Pessoa:
     def nome_e_atributos_de_classe(cls): #o cls está se referindo a classe desse código, no caso, a classe Pessoa
         return f'{cls} - olhos {cls.olhos}'
 
+
+class Homem(Pessoa): #A classe Pessoa é a característica PAI da classe Homem
+    pass
+
+
+
 if __name__ == '__main__':
-    rumbels = Pessoa(nome='Rumbelsperger')
+    rumbels = Homem(nome='Rumbelsperger') #Alterando a classe, por Homem ser uma classe que herda da classe Pessoa, o código continua funcionando
     querido = Pessoa(rumbels, nome='Querido')  # atributo complexo, rumbelsperger depende do querido
     print(Pessoa.cumprimentar(querido))
     print(id(querido))
@@ -50,3 +56,9 @@ if __name__ == '__main__':
                                                                   #os objetos, iremos obter o mesmo resultado, pois ele é padrão
     print(Pessoa.metodo_estatico(), querido.metodo_estatico())
     print(Pessoa.nome_e_atributos_de_classe(), querido.nome_e_atributos_de_classe())
+
+    pessoa = Pessoa('Anônimo')
+    print(isinstance(pessoa, Pessoa)) #Retornará True
+    print(isinstance(pessoa, Homem)) #Retornará False
+    print(isinstance(rumbels, Pessoa)) #Retornará True, pq homem herda de Pessoa
+    print(isinstance(rumbels, Homem)) #Retornará True pois rumbels foi atribuito a classe Homem

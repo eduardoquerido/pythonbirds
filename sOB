@@ -1,0 +1,65 @@
+[1mdiff --git a/fase.py b/fase.py[m
+[1mindex 3385175..1c8fd16 100644[m
+[1m--- a/fase.py[m
+[1m+++ b/fase.py[m
+[36m@@ -43,7 +43,7 @@[m [mclass Fase():[m
+ [m
+         :param obstaculos:[m
+         """[m
+[31m-        pass[m
+[32m+[m[32m        self._obstaculos.extend(obstaculos)[m
+ [m
+     def adicionar_porco(self, *porcos):[m
+         """[m
+[36m@@ -51,7 +51,7 @@[m [mclass Fase():[m
+ [m
+         :param porcos:[m
+         """[m
+[31m-        pass[m
+[32m+[m[32m        self._porcos.extend(porcos)[m
+ [m
+     def adicionar_passaro(self, *passaros):[m
+         """[m
+[36m@@ -59,7 +59,7 @@[m [mclass Fase():[m
+ [m
+         :param passaros:[m
+         """[m
+[31m-        pass[m
+[32m+[m[32m        self._passaros.extend(passaros)[m
+ [m
+     def status(self):[m
+         """[m
+[1mdiff --git a/oo/pessoa.py b/oo/pessoa.py[m
+[1mindex 233293e..0fbf40f 100644[m
+[1m--- a/oo/pessoa.py[m
+[1m+++ b/oo/pessoa.py[m
+[36m@@ -24,8 +24,14 @@[m [mclass Pessoa:[m
+     def nome_e_atributos_de_classe(cls): #o cls está se referindo a classe desse código, no caso, a classe Pessoa[m
+         return f'{cls} - olhos {cls.olhos}'[m
+ [m
+[32m+[m
+[32m+[m[32mclass Homem(Pessoa): #A classe Pessoa é a característica PAI da classe Homem[m
+[32m+[m[32m    pass[m
+[32m+[m
+[32m+[m
+[32m+[m
+ if __name__ == '__main__':[m
+[31m-    rumbels = Pessoa(nome='Rumbelsperger')[m
+[32m+[m[32m    rumbels = Homem(nome='Rumbelsperger') #Alterando a classe, por Homem ser uma classe que herda da classe Pessoa, o código continua funcionando[m
+     querido = Pessoa(rumbels, nome='Querido')  # atributo complexo, rumbelsperger depende do querido[m
+     print(Pessoa.cumprimentar(querido))[m
+     print(id(querido))[m
+[36m@@ -49,4 +55,10 @@[m [mif __name__ == '__main__':[m
+     print(id(Pessoa.olhos), id(rumbels.olhos), id(querido.olhos)) #imprimindo o id desse atributo, seja com a classe ou com[m
+                                                                   #os objetos, iremos obter o mesmo resultado, pois ele é padrão[m
+     print(Pessoa.metodo_estatico(), querido.metodo_estatico())[m
+[31m-    print(Pessoa.nome_e_atributos_de_classe(), querido.nome_e_atributos_de_classe())[m
+\ No newline at end of file[m
+[32m+[m[32m    print(Pessoa.nome_e_atributos_de_classe(), querido.nome_e_atributos_de_classe())[m
+[32m+[m
+[32m+[m[32m    pessoa = Pessoa('Anônimo')[m
+[32m+[m[32m    print(isinstance(pessoa, Pessoa)) #Retornará True[m
+[32m+[m[32m    print(isinstance(pessoa, Homem)) #Retornará False[m
+[32m+[m[32m    print(isinstance(rumbels, Pessoa)) #Retornará True, pq homem herda de Pessoa[m
+[32m+[m[32m    print(isinstance(rumbels, Homem)) #Retornará True pois rumbels foi atribuito a classe Homem[m
+\ No newline at end of file[m
