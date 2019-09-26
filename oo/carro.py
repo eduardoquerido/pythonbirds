@@ -32,7 +32,9 @@ A direção terá a responsabilidade de controlar a direção. Ela oferece os se
     >>> motor.frear()
     >>> motor.velocidade
     1
-
+    >>> motor.frear()
+    >>> motor.velocidade
+    0
 
     >>> #Testando Direção
     >>> direcao=Direcao()
@@ -62,29 +64,55 @@ A direção terá a responsabilidade de controlar a direção. Ela oferece os se
     >>> direcao.girar_a_esquerda()
     >>> direcao.valor
     'Norte'
-    >>> carro= Carro(direcao, motor)
+    >>> carro = Carro(direcao, motor)
     >>> carro.calcular_velocidade()
     0
-    >>> carro= acelerar()
+    >>> carro.acelerar()
     >>> carro.calcular_velocidade()
     1
-    >>> carro= acelerar()
+    >>> carro.acelerar()
     >>> carro.calcular_velocidade()
     2
-    >>> carro= frear()
+    >>> carro.frear()
     >>> carro.calcular_velocidade()
     0
     >>> carro.calcular_direcao()
-    >>> 'Norte'
+    'Norte'
     >>> carro.girar_a_direita()
     >>> carro.calcular_direcao()
-    >>> 'Leste'
-    >>> carro.girar_a_direita()
+    'Leste'
+    >>> carro.girar_a_esquerda()
     >>> carro.calcular_direcao()
-    >>> 'Sul'
-
+    'Norte'
+    >>> carro.girar_a_esquerda()
+    >>> carro.calcular_direcao()
+    'Oeste'
 
 """
+class Carro:
+    def __init__(self, direcao, motor) :
+        self.motor = motor
+        self.direcao = direcao
+
+    def calcular_velocidade(self):
+        return self.motor.velocidade
+
+    def calcular_direcao(self):
+        return self.direcao.valor
+
+    def girar_a_direita(self):
+        self.direcao.girar_a_direita()
+
+    def girar_a_esquerda(self):
+        self.direcao.girar_a_esquerda()
+
+    def acelerar(self):
+        return self.motor.acelerar()
+
+    def frear(self):
+        return self.motor.frear()
+
+
 class Motor:
     def __init__(self):
         self.velocidade = 0
