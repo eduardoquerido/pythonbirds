@@ -14,7 +14,8 @@ class Pessoa:
 
     def cumprimentar(
             self):  # método é diferente de uma função pois está dentro de uma classe e sempre está atrelado a um objeto
-        return f'Olá {id(self)}'
+        #return f'Olá {id(self)}'
+        return f'Olá meu nome é {self.nome}'
 
     @staticmethod #Isso é um decorator
     def metodo_estatico():
@@ -26,17 +27,25 @@ class Pessoa:
 
 
 class Homem(Pessoa): #A classe Pessoa é a característica PAI da classe Homem
-    pass
-
+    def cumprimentar(self):
+        cumprimentar_da_classe_pai= super().cumprimentar()
+        return cumprimentar_da_classe_pai + ', Aperto de mão' #sobrescrevendo o método cumprimentar da classe pai 'Pessoa'lass Homem(Pessoa): #A classe Pessoa é a característica PAI da classe Homem
 
 class Mutante(Pessoa): #A classe Pessoa é a característica PAI da classe Homem
     olhos = 3 #Sobrescrita de atributo, esse atributo sobrepoe o atributo já definido na classe Pai, no caso dessa a classe Pessoa
+    def cumprimentar(self):
+        return 'Eu sou um X-men'
 
+class Xmen(Mutante):
+    def cumprimentar(self):
+        cumprimentar_da_classe_pai= super().cumprimentar()
+        return cumprimentar_da_classe_pai + ', Aperto de mão' #sobrescrevendo o método cumprimentar da classe pai 'Pessoa'
 
 
 if __name__ == '__main__':
     rumbels = Homem(nome='Rumbelsperger') #Alterando a classe, por Homem ser uma classe que herda da classe Pessoa, o código continua funcionando
-    dudu = Mutante(nome='Rumbelsperger') #Alterando a classe, por Homem ser uma classe que herda da classe Pessoa, o código continua funcionando
+    mutante = Xmen(nome='Professor Xavier')
+    dudu = Mutante(nome='Dudu') #Alterando a classe, por Homem ser uma classe que herda da classe Pessoa, o código continua funcionando
     querido = Pessoa(rumbels, nome='Querido')  # atributo complexo, rumbelsperger depende do querido
     print(Pessoa.cumprimentar(querido))
     print(id(querido))
@@ -69,3 +78,8 @@ if __name__ == '__main__':
     print(isinstance(rumbels, Homem)) #Retornará True pois rumbels foi atribuito a classe Homem
     print(rumbels.olhos)
     print(dudu.olhos)
+
+    print(querido.cumprimentar())
+    print(rumbels.cumprimentar())
+    print(dudu.cumprimentar())
+    print(mutante.cumprimentar())
