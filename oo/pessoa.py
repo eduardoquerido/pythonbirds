@@ -29,9 +29,14 @@ class Homem(Pessoa): #A classe Pessoa é a característica PAI da classe Homem
     pass
 
 
+class Mutante(Pessoa): #A classe Pessoa é a característica PAI da classe Homem
+    olhos = 3 #Sobrescrita de atributo, esse atributo sobrepoe o atributo já definido na classe Pai, no caso dessa a classe Pessoa
+
+
 
 if __name__ == '__main__':
     rumbels = Homem(nome='Rumbelsperger') #Alterando a classe, por Homem ser uma classe que herda da classe Pessoa, o código continua funcionando
+    dudu = Mutante(nome='Rumbelsperger') #Alterando a classe, por Homem ser uma classe que herda da classe Pessoa, o código continua funcionando
     querido = Pessoa(rumbels, nome='Querido')  # atributo complexo, rumbelsperger depende do querido
     print(Pessoa.cumprimentar(querido))
     print(id(querido))
@@ -43,7 +48,7 @@ if __name__ == '__main__':
     querido.sobrenome = 'Ferreira'  # Aqui estou incluindo um atributo dinâmico
     del querido.filhos  # Aqui estou REMOVENDO um atributo dinamicamente
     print(querido.sobrenome)
-    rumbels.olhos = 1 #quando eu altero um atributo de classe de um objeto ele passa a fazer parte do __dict__ desse objeto
+    #rumbels.olhos = 1 #quando eu altero um atributo de classe de um objeto ele passa a fazer parte do __dict__ desse objeto
     print(querido.__dict__)  # os atributps de instância ficam armazenados no "__dict__"
     print(rumbels.__dict__) #Aqui será incluso o atributo olhos = 1, pois foi alterado  e virou um atributo de instância
 
@@ -62,3 +67,5 @@ if __name__ == '__main__':
     print(isinstance(pessoa, Homem)) #Retornará False
     print(isinstance(rumbels, Pessoa)) #Retornará True, pq homem herda de Pessoa
     print(isinstance(rumbels, Homem)) #Retornará True pois rumbels foi atribuito a classe Homem
+    print(rumbels.olhos)
+    print(dudu.olhos)
