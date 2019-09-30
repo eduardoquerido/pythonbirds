@@ -759,6 +759,7 @@ class PassaroAmareloTests(PassaroBaseTests):
         self.assert_passaro_posicao(1, y, ATIVO, passaro, tempo)
 
 
+
 if __name__=='__main__':
     teste= AtorTestes()
     teste.teste_colisao_entre_atores_ativos()
